@@ -23,8 +23,8 @@ describe('Truco', function() {
       expect(truco.getMaoJogador1().length).toEqual(2);
     });
 
-    xit('passa a ter uma carta na mesa', function() {
-
+    it('passa a ter uma carta na mesa', function() {
+      expect(truco.getMesa().length).toEqual(1);
     });
 
     xit('passa a ser a vez do jogador2', function() {

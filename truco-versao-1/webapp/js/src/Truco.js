@@ -9,6 +9,7 @@ Jogador.prototype.getMao = function() {
 function Truco() {
   this._jogador1 = new Jogador();
   this._jogador2 = new Jogador();
+  this._mesa = [];
 }
 
 Truco.prototype.getMaoJogador1 = function() {
@@ -21,4 +22,8 @@ Truco.prototype.getMaoJogador2 = function() {
 
 Truco.prototype.jogarUmaCarta = function() {
   return this._jogador1._mao.pop();
+};
+
+Truco.prototype.getMesa = function() {
+  return this._mesa;
 };
