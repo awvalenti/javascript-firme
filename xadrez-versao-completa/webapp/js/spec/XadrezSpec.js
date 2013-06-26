@@ -16,8 +16,8 @@ describe('um xadrez', function() {
       expect(xadrez.naPosicao('g1')).toBe('CAVALO');
       expect(xadrez.naPosicao('h1')).toBe('TORRE');
 
-      ['2', '3', '4', '5', '6'].forEach(function(numero) {
-        ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].forEach(function(letra) {
+      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].forEach(function(letra) {
+        ['3', '4', '5', '6'].forEach(function(numero) {
           expect(xadrez.naPosicao(letra + numero)).toBe('VAZIO');
         });
       });
@@ -32,12 +32,12 @@ describe('um xadrez', function() {
     });
   });
 
-  describe('apos uma jogada de peao', function() {
+  describe('apos um movimento de PEAO das BRANCAS', function() {
     beforeEach(function() {
       xadrez.mover('e2', 'e4');
     });
 
-    it('altera a posicao do peao', function() {
+    it('altera a posicao do PEAO', function() {
       expect(xadrez.naPosicao('e2')).toBe('VAZIO');
       expect(xadrez.naPosicao('e4')).toBe('PEAO');
     });
@@ -45,5 +45,21 @@ describe('um xadrez', function() {
     it('muda para a vez das PRETAS', function() {
       expect(xadrez.vez()).toBe('PRETAS');
     });
+
+    describe('apos um movimento de CAVALO das PRETAS', function() {
+      beforeEach(function() {
+        xadrez.mover('g8', 'f6');
+      });
+
+      it('altera a posicao do CAVALO', function() {
+        expect(xadrez.naPosicao('g8')).toBe('VAZIO');
+        expect(xadrez.naPosicao('f6')).toBe('CAVALO');
+      });
+
+      it('muda para a vez das BRANCAS', function() {
+        expect(xadrez.vez()).toBe('BRANCAS');
+      });
+    });
+
   });
 });
