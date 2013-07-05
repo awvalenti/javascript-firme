@@ -25,7 +25,7 @@ Xadrez.prototype.vez = function() {
   return this._vez;
 };
 
-Xadrez.prototype.mover = function(origem, destino) {
+Xadrez.prototype.moverPeca = function(origem, destino) {
   if (!(valido(origem) && valido(destino))) return false;
 
   var resultado = this._executarMovimento(extrairLinha(origem), extrairColuna(origem), extrairLinha(destino), extrairColuna(destino));

@@ -1,8 +1,3 @@
-function Jogador(corPecas, nomeJogador) {
-  this._corPecas = corPecas;
-  this._nomeJogador = nomeJogador;
-}
-
 function Xadrez(nomeJogadorBrancas, nomeJogadorPretas) {
   this._matriz = [
     ['TORRE' , 'CAVALO', 'BISPO' , 'RAINHA', 'REI'   , 'BISPO' , 'CAVALO', 'TORRE' ],
@@ -28,7 +23,7 @@ Xadrez.prototype.getContadorMovimentos = function() {
   return this._contadorMovimentos;
 };
 
-Xadrez.prototype.mover = function(origem, destino) {
+Xadrez.prototype.moverPeca = function(origem, destino) {
   var linhaOrigem = extrairLinha(origem),
       colunaOrigem = extrairColuna(origem),
       linhaDestino = extrairLinha(destino),
@@ -49,21 +44,3 @@ Xadrez.prototype.mover = function(origem, destino) {
   ++this._indiceJogadorAtual;
   this._indiceJogadorAtual %= 2;
 };
-
-function extrairLinha(codigoPosicao) {
-  return 8 - (codigoPosicao.charCodeAt(1) - '0'.charCodeAt());
-}
-
-function extrairColuna(codigoPosicao) {
-  return codigoPosicao.charCodeAt() - 'a'.charCodeAt();
-}
-
-function valido(codigoPosicao) {
-  var linha = extrairLinha(codigoPosicao), coluna = extrairColuna(codigoPosicao);
-  return linha >= 0 && linha < 8 && coluna >= 0 && coluna < 8;
-}
-
-var xadrez = new Xadrez();
-xadrez.mover('e2', 'e4');
-console.log(xadrez.getPeca('e2'));
-console.log(xadrez.getPeca('e4'));

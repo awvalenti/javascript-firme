@@ -34,7 +34,7 @@ describe('um xadrez', function() {
 
   describe('apos um movimento de PEAO das BRANCAS', function() {
     beforeEach(function() {
-      xadrez.mover('e2', 'e4');
+      xadrez.moverPeca('e2', 'e4');
     });
 
     it('deve alterar a posicao do PEAO', function() {
@@ -48,7 +48,7 @@ describe('um xadrez', function() {
 
     describe('apos um movimento de CAVALO das PRETAS', function() {
       beforeEach(function() {
-        xadrez.mover('g8', 'f6');
+        xadrez.moverPeca('g8', 'f6');
       });
 
       it('deve alterar a posicao do CAVALO', function() {
@@ -65,23 +65,23 @@ describe('um xadrez', function() {
 
   describe('deve bloquear movimentos invalidos', function() {
     it('para codigos invalidos', function() {
-      expect(xadrez.mover('a0', 'e4')).toBe(false);
+      expect(xadrez.moverPeca('a0', 'e4')).toBe(false);
       expect(xadrez.vez()).toBe('BRANCAS');
 
-      expect(xadrez.mover('e2', 'e0')).toBe(false);
+      expect(xadrez.moverPeca('e2', 'e0')).toBe(false);
       expect(xadrez.vez()).toBe('BRANCAS');
 
-      expect(xadrez.mover('i1', 'h1')).toBe(false);
+      expect(xadrez.moverPeca('i1', 'h1')).toBe(false);
       expect(xadrez.vez()).toBe('BRANCAS');
     });
 
     it('para peoes querendo avancar tres casas', function() {
-      expect(xadrez.mover('e2', 'e5')).toBe(false);
+      expect(xadrez.moverPeca('e2', 'e5')).toBe(false);
       expect(xadrez.naPosicao('e2')).toBe('PEAO');
       expect(xadrez.naPosicao('e5')).toBe('VAZIO');
       expect(xadrez.vez()).toBe('BRANCAS');
 
-      expect(xadrez.mover('a2', 'a5')).toBe(false);
+      expect(xadrez.moverPeca('a2', 'a5')).toBe(false);
       expect(xadrez.naPosicao('a2')).toBe('PEAO');
       expect(xadrez.naPosicao('a5')).toBe('VAZIO');
       expect(xadrez.vez()).toBe('BRANCAS');
@@ -90,9 +90,9 @@ describe('um xadrez', function() {
 
   describe('apos uma sequencia de movimentos', function() {
     beforeEach(function() {
-      xadrez.mover('e2', 'e4');
-      xadrez.mover('e7', 'e5');
-      xadrez.mover('f1', 'a6');
+      xadrez.moverPeca('e2', 'e4');
+      xadrez.moverPeca('e7', 'e5');
+      xadrez.moverPeca('f1', 'a6');
     });
 
     it('pecas devem estar nas posicoes esperadas', function() {
@@ -107,7 +107,7 @@ describe('um xadrez', function() {
 
     describe('apos CAVALO capturar BISPO', function() {
       beforeEach(function() {
-        xadrez.mover('b8', 'a6');
+        xadrez.moverPeca('b8', 'a6');
       });
 
       it('pecas devem estar nas posicoes esperadas', function() {
