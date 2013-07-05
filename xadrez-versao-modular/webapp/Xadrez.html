@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Xadrez</title>
+</head>
+
+<body>
+  <h1>Xadrez</h1>
+  
+  <p>Veja o console, apertando F12 no Chrome ou CTRL+SHIFT+K no Firefox</p>
+
+  <!--
+    O unico <script> no html fica sendo este que carrega a ferramenta RequireJS.
+    
+    O atributo data-main indica o primeiro arquivo .js a ser carregado e executado.
+    
+    Esse arquivo (xadrez-main.js) ira' causar o carregamento dos outros scripts
+    por meio da declaracao de suas dependencias, na chamada a define.
+  -->
+  <script src="js/lib/require.js" data-main="js/src/xadrez-main"></script>
+  
+</body>
+</html>
