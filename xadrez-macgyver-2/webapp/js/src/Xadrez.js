@@ -11,7 +11,10 @@ function Xadrez(nomeJogadorBrancas, nomeJogadorPretas) {
   ];
 
   this._jogadores = [new Jogador('BRANCAS', nomeJogadorBrancas), new Jogador('PRETAS', nomeJogadorPretas)];
+
+  // Sera que precisava mesmo deste contador ja' desde o inicio do projeto?
   this._contadorMovimentos = 0;
+
   this._indiceJogadorAtual = 0;
 }
 

@@ -12,6 +12,7 @@
   <p>Veja o console, apertando F12 no Chrome ou CTRL+SHIFT+K no Firefox</p>
 
   <script>
+    // Sera que precisava mesmo desta classe Jogador ja' desde o inicio do projeto?
     function Jogador(corPecas, nomeJogador) {
       this._corPecas = corPecas;
       this._nomeJogador = nomeJogador;
@@ -30,7 +31,10 @@
       ];
   
       this._jogadores = [new Jogador('BRANCAS', nomeJogadorBrancas), new Jogador('PRETAS', nomeJogadorPretas)];
+
+      // Sera que precisava mesmo deste contador ja' desde o inicio do projeto?
       this._contadorMovimentos = 0;
+
       this._indiceJogadorAtual = 0;
     }
   
