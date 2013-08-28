@@ -1,5 +1,5 @@
+// Jogador nao tem nenhuma dependencia. Nesse caso, o vetor de dependencias pode ser omitido.
 define(function() {
-  // Esta classe nao possui nenhuma dependencia. Por isso, o vetor de dependencias e' omitido.
 
   function Jogador(corPecas, nomeJogador) {
     this._corPecas = corPecas;

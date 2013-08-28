@@ -1,4 +1,8 @@
-define(function() {
+// Xadrez tem uma dependencia: a classe Posicao
+define([
+  'src/Posicao'
+],
+function(Posicao) {
   function Xadrez() {
     this._pecasCapturadas = [];
     this._vez = 'BRANCAS';
@@ -15,7 +19,9 @@ define(function() {
   }
 
   Xadrez.prototype.naPosicao = function(codigoPosicao) {
-    return this._matriz[extrairLinha(codigoPosicao)][extrairColuna(codigoPosicao)];
+    var posicao = new Posicao(codigoPosicao);
+
+    return this._matriz[posicao.getLinha()][posicao.getColuna()];
   };
 
   Xadrez.prototype.pecasCapturadas = function() {
@@ -26,10 +32,13 @@ define(function() {
     return this._vez;
   };
 
-  Xadrez.prototype.moverPeca = function(origem, destino) {
-    if (!(valido(origem) && valido(destino))) return false;
+  Xadrez.prototype.moverPeca = function(codigoOrigem, codigoDestino) {
+    var origem = new Posicao(codigoOrigem),
+        destino = new Posicao(codigoDestino);
 
-    var resultado = this._executarMovimento(extrairLinha(origem), extrairColuna(origem), extrairLinha(destino), extrairColuna(destino));
+    if (!(origem.ehValida() && destino.ehValida())) return false;
+
+    var resultado = this._executarMovimento(origem.getLinha(), origem.getColuna(), destino.getLinha(), destino.getColuna());
 
     if (resultado) this._vez = this._vez === 'BRANCAS' ? 'PRETAS' : 'BRANCAS';
 
@@ -49,18 +58,6 @@ define(function() {
     return true;
   };
 
-  function extrairLinha(codigoPosicao) {
-    return 8 - (codigoPosicao.charCodeAt(1) - '0'.charCodeAt());
-  }
-
-  function extrairColuna(codigoPosicao) {
-    return codigoPosicao.charCodeAt() - 'a'.charCodeAt();
-  }
-
-  function valido(codigoPosicao) {
-    var linha = extrairLinha(codigoPosicao), coluna = extrairColuna(codigoPosicao);
-    return linha >= 0 && linha < 8 && coluna >= 0 && coluna < 8;
-  }
-
   return Xadrez;
+
 });

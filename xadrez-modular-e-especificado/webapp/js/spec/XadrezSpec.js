@@ -1,3 +1,4 @@
+// XadrezSpec tem uma dependencia: a classe Xadrez
 define([
   'src/Xadrez'
 ],
