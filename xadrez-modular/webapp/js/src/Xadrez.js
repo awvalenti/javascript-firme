@@ -1,4 +1,4 @@
-// Xadrez tem duas dependencias: Jogador e Posicao
+// Xadrez tem duas dependencias: Posicao e Jogador
 define([
   'Posicao',
   'Jogador'
