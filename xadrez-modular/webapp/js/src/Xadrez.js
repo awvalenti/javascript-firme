@@ -1,9 +1,10 @@
+// Xadrez tem duas dependencias: Jogador e Posicao
 define([
-  'XadrezUtils',
+  'Posicao',
   'Jogador'
 ],
 function(
-  XadrezUtils,
+  Posicao,
   Jogador
 ) {
   function Xadrez(nomeJogadorBrancas, nomeJogadorPretas) {
@@ -24,28 +25,27 @@ function(
   }
 
   Xadrez.prototype.getPeca = function(codigoPosicao) {
-    return this._matriz[extrairLinha(codigoPosicao)][extrairColuna(codigoPosicao)];
+    var posicao = new Posicao(codigoPosicao);
+
+    return this._matriz[posicao.getLinha()][posicao.getColuna()];
   };
 
   Xadrez.prototype.getContadorMovimentos = function() {
     return this._contadorMovimentos;
   };
 
-  Xadrez.prototype.moverPeca = function(origem, destino) {
-    var linhaOrigem = extrairLinha(origem),
-        colunaOrigem = extrairColuna(origem),
-        linhaDestino = extrairLinha(destino),
-        colunaDestino = extrairColuna(destino);
+  Xadrez.prototype.moverPeca = function(codigoOrigem, codigoDestino) {
+    var origem = new Posicao(codigoOrigem),
+        destino = new Posicao(codigoDestino);
 
-    if (linhaOrigem < 0 || linhaOrigem >= 8 || colunaOrigem < 0 || colunaOrigem >= 8 ||
-        linhaDestino < 0 || linhaDestino >= 8 || colunaDestino < 0 || colunaDestino >= 8) {
+    if (!(origem.ehValida() && destino.ehValida())) {
       throw new Error('Movimento invalido: de ' + origem + ' para ' + destino);
     }
 
-    var pecaOrigem = this._matriz[linhaOrigem][colunaOrigem];
+    var pecaOrigem = this._matriz[origem.getLinha()][origem.getColuna()];
 
-    this._matriz[linhaDestino][colunaDestino] = pecaOrigem;
-    this._matriz[linhaOrigem][colunaOrigem] = 'VAZIO';
+    this._matriz[destino.getLinha()][destino.getColuna()] = pecaOrigem;
+    this._matriz[origem.getLinha()][origem.getColuna()] = 'VAZIO';
 
     ++this._contadorMovimentos;
 
